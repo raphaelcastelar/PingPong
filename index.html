@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Ping Pong</title>
+    <style>
+        * {
+          margin: 0;
+          padding: 0; 
+          overflow: hidden; 
+        }
+    </style>
+</head>
+<body>
+    
+    <canvas>
+        
+    </canvas>
+    <script>
+        const canvasE1 = document.querySelector("canvas"),
+        canvasCtx = canvasE1.getContext("2d")
+        const linewidth = 15
+        
+        function setup(){
+            canvasE1.width = canvasCtx.width = window.innerWidth
+            canvasE1.height = canvasCtx.height = window.innerHeight
+            
+            
+         }
+
+
+         //Função de desenho que criou o background
+         function draw(){
+            canvasCtx.fillStyle = "#286047"
+            canvasCtx.fillRect(0, 0, window.innerWidth, window.innerHeight)
+
+
+
+            //Desenhei a linha central
+            canvasCtx.fillStyle = "#ffffff"
+            const x = window.innerWidth / 2 - linewidth / 2
+            const y = 0
+            const w = linewidth
+            const h = window.innerHeight
+            
+            canvasCtx.fillRect(x, y, w, h)
+
+            // Desenhei a raquete esquerda
+            canvasCtx.fillRect(10, 400, linewidth, 200)
+            // Desenhei a raquete direita
+            canvasCtx.fillRect(window.innerWidth - linewidth - 10, 120, linewidth, 200 )
+
+         }
+
+         
+
+
+         setup()
+         draw()
+    </script>
+
+</body>
+</html>
