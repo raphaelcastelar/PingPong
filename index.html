@@ -96,6 +96,14 @@
         const score = {
             human: 1,
             computer: 2,
+            increaseHuman: function () {
+                this.human++
+
+            },
+            increaseComputer: function () {
+                this.computer++
+
+            },
             draw:function(){
 
                 //desenhei o placar
@@ -118,6 +126,21 @@
             directionX: 1,
             directionY: 1, 
             _calcPosition: function(){
+
+                if (this.x > field.w - this.r - rightPaddle.w - gapX){
+                    //verifica se a raquete direita está na posição y da bola
+                    if (this.y + this.r > rightPaddle.y &&
+                     this.y - this.r < rightPaddle.y + rightPaddle.h 
+                     ) {
+                        //rebate a bola, invertendo o sinal de X
+                        this._reverseX()
+                    }else {
+                        //fazer o ponto
+                        score.increaseHuman()
+                        this._pointUp()
+                    }
+
+                }
                 //verifica as laterais superior e inferior do campo
                 if(
                     
@@ -139,6 +162,11 @@
                 //-1 * -1 = 1
                 this.directionY = directionY * -1
 
+
+            },
+            _pointUp: function(){
+                this.x = field.w / 2
+                this.y = field.h / 2
 
             },
             _move: function(){
