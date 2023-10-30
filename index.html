@@ -22,6 +22,8 @@
         const canvasE1 = document.querySelector("canvas"),
         canvasCtx = canvasE1.getContext("2d")
         const gapX = 10
+        
+        const mouse = {x: 0, y: 0}
 
         const field = {
             w: window.innerWidth,
@@ -54,13 +56,19 @@
 
         const leftPaddle = {
             x: gapX,
-            y: 100,
+            y: 0,
             w: line.w,
             h: 200,
+            _move: function(){
+            this.y = mouse.y - this.h / 2
+
+            },
             draw: function () {
                 // Desenhei a raquete esquerda
             canvasCtx.fillStyle = "#ffffff"
             canvasCtx.fillRect(this.x, this.y, this.w, this.h)
+
+            this._move()
             }
 
 
@@ -71,11 +79,17 @@
             y: 100,
             w: line.w,
             h: 200,
+            _move: function(){
+                this.y = ball.y
+
+            },
             draw: function () {
                 // Desenhei a raquete direita
             canvasCtx.fillStyle = "#ffffff"
             canvasCtx.fillRect(this.x, this.y, this.w, this.h)
-            }
+
+            this._move()
+            },
 
         }
 
@@ -163,6 +177,13 @@
 
          setup()
          main()
+
+         canvasE1.addEventListener('mousemove', function(e){
+            mouse.x = e.pageX
+            mouse.y = e.pageY
+
+            console.log(mouse)
+         })
          
     </script>
 
