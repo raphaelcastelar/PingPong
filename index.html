@@ -100,12 +100,19 @@
             x: 300,
             y: 200,
             r: 20,
+            speed: 10,
+            _move: function(){
+                this.x += 1 * this.speed
+                this.w += 1 * this.speed
+
+            },
             draw: function(){
                 //desenhei a bolinha
             canvasCtx.fillStyle = "#ffffff"
             canvasCtx.beginPath()
             canvasCtx.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false )
             canvasCtx.fill()
+            this._move()
 
             }
 
@@ -129,12 +136,6 @@
             ball.draw()
 
             
-           
-            
-
-            
-
-            
          }
 
          
@@ -142,6 +143,8 @@
 
          setup()
          draw()
+
+         window.setInterval(draw, 1000 / 60)
     </script>
 
 </body>
