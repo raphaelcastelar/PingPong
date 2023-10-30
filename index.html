@@ -69,7 +69,7 @@
             canvasCtx.fillRect(this.x, this.y, this.w, this.h)
 
             this._move()
-            }
+            },
 
 
         }
@@ -111,13 +111,39 @@
         }
 
         const ball = {
-            x: 300,
-            y: 200,
+            x: 0,
+            y: 0,
             r: 20,
             speed: 5,
+            directionX: 1,
+            directionY: 1, 
+            _calcPosition: function(){
+                //verifica as laterais superior e inferior do campo
+                if(
+                    
+                (this.y - this.r < 0 && this.directionY < 0) ||
+                (this.y > field.h - this.r && this.directionY > 0)){
+                    this._reverseY()
+
+                }
+            },
+
+            //rebate a bola
+            _reverseX: function(){
+                this.directionX = directionX * -1
+                
+
+            },
+            _reverseY: function(){
+                //1 * -1 = -1
+                //-1 * -1 = 1
+                this.directionY = directionY * -1
+
+
+            },
             _move: function(){
-                this.x += 1 * this.speed
-                this.w += 1 * this.speed
+                this.x += this.directionX * this.speed
+                this.w += this.directionY * this.speed
 
             },
             draw: function(){
@@ -126,6 +152,7 @@
             canvasCtx.beginPath()
             canvasCtx.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false )
             canvasCtx.fill()
+            this._calcPosition()
             this._move()
 
             }
