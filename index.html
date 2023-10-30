@@ -42,7 +42,7 @@
                 canvasCtx.fillStyle = "#ffffff"
             const x = field.w / 2 - this.w / 2
             const y = 0
-            const w = linewidth
+            const w = this.w
             const h = this.h
             
             canvasCtx.fillRect(x, y, w, h)
@@ -57,7 +57,7 @@
             y: 100,
             w: line.w,
             h: 200,
-            draw: function(){
+            draw: function () {
                 // Desenhei a raquete esquerda
             canvasCtx.fillStyle = "#ffffff"
             canvasCtx.fillRect(this.x, this.y, this.w, this.h)
@@ -71,8 +71,8 @@
             y: 100,
             w: line.w,
             h: 200,
-            draw: function(){
-                // Desenhei a raquete esquerda
+            draw: function () {
+                // Desenhei a raquete direita
             canvasCtx.fillStyle = "#ffffff"
             canvasCtx.fillRect(this.x, this.y, this.w, this.h)
             }
@@ -92,11 +92,11 @@
             field.draw()
             line.draw()
             leftPaddle.draw()
-
+            rightPaddle.draw()
 
 
             
-            // Desenhei a raquete direita
+           
             
 
             //desenhei a bolinha
